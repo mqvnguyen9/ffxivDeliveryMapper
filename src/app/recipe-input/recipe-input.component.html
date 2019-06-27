@@ -1,0 +1,22 @@
+<div [formGroup]="formGrouping">
+  <div formArrayName="items">
+    <div class="add-button-div">
+      <button mat-raised-button color="accent" class="add-button" (click)="addItem()">
+        <mat-icon>add</mat-icon>
+        Add Items
+      </button>
+    </div>
+    <mat-form-field class="input-box">
+      <input matInput [formControl]="firstItemControl" placeholder="Item" required>
+    </mat-form-field>
+    <br>
+    <div class="optional-input" *ngFor="let item of items.controls; let i=index">
+      <mat-form-field class="input-box">
+        <input type="text" matInput class="input-boxes" placeholder="Item" [formControlName]="i" value="">
+      </mat-form-field>
+      <button mat-icon-button class="delete-button" (click)="deleteItem(i)">
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
